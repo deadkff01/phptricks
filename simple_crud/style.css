@@ -1,0 +1,77 @@
+ #container{
+ margin:10px;
+ position:absolute;
+ border:1px solid lightgray;
+padding:20px 10px;
+ }
+ 
+ a {
+      text-decoration:none;
+   }
+
+   table{
+   margin:10px;
+   }
+ 
+	label, input[type='text']{
+	display:block;
+	margin:10px;
+	}
+ 
+   table.bordasimples {
+   border-collapse: collapse;
+   }
+   
+ table.bordasimples tr td {
+ border:1px solid lightgray;
+ padding:10px;
+ }
+ 
+ 
+ table.bordasimples tr th {
+ border:1px solid gray;
+ 
+ }
+
+ .btn{
+ height:50px;
+ border:1px solid gray;
+ border-radius:5px;
+ padding: 5px;
+ margin:5px;
+ color:gray;
+ }
+  .btn:hover{
+background:lightgray;
+ }
+ 
+  .insertbtn{
+ height:80px;
+ background:#00CD00;
+ color:white;
+
+ margin:10px;
+ }
+ 
+   .insertbtn:hover{
+ background:#228B22;
+ }
+ 
+   .updatebtn{
+ background:#00CD00;
+ color:white;
+ }
+ 
+   .updatebtn:hover{
+ background:#228B22;
+ }
+ 
+    .deletebtn{
+ background:#EE3B3B;
+ color:white;
+ }
+ 
+   .deletebtn:hover{
+ background:#CD3333;
+ }
+ 
