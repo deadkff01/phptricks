@@ -10,31 +10,38 @@
     <script>
 	$(document).ready(function (){
 		var formInsert = $('#formToInsert');
+		var terminal = $('#terminalContainer');
 		
 		formInsert.bind("submit", function(ev) {
+			
 			var getAction = $('#action').val();
 			
-			
-			$.ajax({
-			 type:formInsert.attr('method'),
-			 url:formInsert.attr('action'),
-			 data:{action: getAction},
-			 success: function(data){
-				$('#terminalContainer').append('<div>'+data+'</div>');
-				},
-			 
-			 complete: function(){
-			   formInsert.each(function(){
-              this.reset();  
-            });
-			     
-			  }, 
-			 error: function(){
-			  $('#terminalContainer').text('An error occured..');
+			if(getAction == 'reset'){
+				terminal.empty();
+				formInsert.reset();
 			}
-				
-			});
+			else {
 			
+				$.ajax({
+				 type:formInsert.attr('method'),
+				 url:'php/process.php',
+				 data:{action: getAction},
+				 success: function(data){
+					terminal.append('<div>'+data+'</div>');
+					},
+				 
+				 complete: function(){
+				   formInsert.each(function(){
+				  this.reset();  
+				});
+					 
+				  }, 
+				 error: function(){
+				  $('#terminalContainer').text('An error occured..');
+				}
+					
+				});
+			}
 			
 			ev.preventDefault();
 			
@@ -47,7 +54,7 @@
 
 <div id="terminalContainer" >
 </div>
-<form method="post" action="php/process.php" id="formToInsert">
+<form method="post" action="" id="formToInsert">
 <span>$></span><input type="text" id="action" name="action">
 </form>
 </body>
