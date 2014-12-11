@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Terminal</title>
+
+  <link rel="stylesheet" type="text/css" href="css/Estilo.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  
+    <script>
+	$(document).ready(function (){
+		var formInsert = $('#formToInsert');
+		
+		formInsert.bind("submit", function(ev) {
+			var getAction = $('#action').val();
+			
+			
+			$.ajax({
+			 type:formInsert.attr('method'),
+			 url:formInsert.attr('action'),
+			 data:{action: getAction},
+			 success: function(data){
+				$('#terminalContainer').append('<div>'+data+'</div>');
+				},
+			 
+			 complete: function(){
+			   formInsert.each(function(){
+              this.reset();  
+            });
+			     
+			  }, 
+			 error: function(){
+			  $('#terminalContainer').text('An error occured..');
+			}
+				
+			});
+			
+			
+			ev.preventDefault();
+			
+		});
+		
+	});
+	</script>
+</head>
+<body>
+
+<div id="terminalContainer" >
+</div>
+<form method="post" action="php/process.php" id="formToInsert">
+<span>$></span><input type="text" id="action" name="action">
+</form>
+</body>
+</html>
